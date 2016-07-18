@@ -58,10 +58,23 @@ int main() {
         int play = playboys[i];
         int equalLady = find_x(ladys, 0, n, play);
 
+        int leftPosition;
+        int rightPosition;
 
         if (play == ladys[equalLady]) {
-            Llady = ladys[equalLady - 1];
-            Rlady = ladys[equalLady + 1];
+            leftPosition = equalLady;
+            rightPosition = equalLady;
+
+            while(ladys[leftPosition]==play)
+            {
+                leftPosition--;
+            }
+            while(ladys[rightPosition]==play)
+            {
+                rightPosition++;
+            }
+            Llady = ladys[leftPosition];
+            Rlady = ladys[rightPosition];
         } else if (play > ladys[equalLady]) {
             Llady = ladys[equalLady];
             Rlady = ladys[equalLady + 1];
