@@ -36,14 +36,23 @@ int main() {
         scanf("%d", &size);
 
         int maxD = 0;
+        int before = 0;
         int j;
         vector<int> newColumn;
         for (j = 0; j < size; ++j) {
             int height;
             scanf("%d", &height);
+
+            if((height - before) > maxD)
+            {
+                maxD = (height - before);
+            }
+            before = height;
+
             newColumn.push_back(height);
         }
 
+        heights[i] = maxD;
         matrix.push_back(newColumn);
 
     }
@@ -52,8 +61,9 @@ int main() {
     {
 
 
-        int middle = matrix.at(i).size()/2;
-        int energy = (matrix.at(i).at(middle)  - matrix.at(i).at((middle - 1)));
+        //int middle = matrix.at(i).size()/2;
+        //int energy = (matrix.at(i).at(middle)  - matrix.at(i).at((middle - 1)));
+        int energy = heights[i];
 
         bool pass = simulation(energy, matrix.at(i), matrix.at(i).size());
 
